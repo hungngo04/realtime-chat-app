@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Message from './Message';
 import './App.css';
 
 function App() {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([{username: 'hung'}, {text: 'hello'}, {username: 'hung1'}, {text: 'hi'}]);
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    setUsername(prompt('Enter username: '))
+  }, [])
 
   //testing
   console.log(input);
@@ -17,28 +23,30 @@ function App() {
     //prevent refreshing after submit form
     event.preventDefault();
     //store the previous messages after a new message appear
-    setMessages([...messages, input]);
+    setMessages(
+      [...messages, {username: username, text: input}]
+    );
     setInput('');
   }
 
   return (
     <div className="App">
       <h1>Chat app</h1>
-
+      <h2>Welcome {username}</h2>
+      {/* Input field */}
       <form>
-        {/* Input field */}
         <Form>
           <Form.Group className="message-form">
             <Form.Control value={input} onChange={event => setInput(event.target.value)} placeholder="Enter a message.."/>
           </Form.Group>
           <Button disabled={!input} variant='primary' type='submit' onClick={sendMessage}>Send message</Button>
         </Form>
-        {/* Input */}
       </form>
-      
+      {/* Input */}
+
       {
         messages.map(message => (
-          <p>{message}</p>
+            <Message username={message.username} text={message.text} />
         ))
       }
 
