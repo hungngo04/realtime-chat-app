@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
@@ -24,9 +27,12 @@ function App() {
 
       <form>
         {/* Input field */}
-        <input value={input} onChange={event => setInput(event.target.value)}/>
-        {/* Button */}
-        <button type='submit' onClick={sendMessage}>Send message</button>
+        <Form>
+          <Form.Group className="message-form">
+            <Form.Control value={input} onChange={event => setInput(event.target.value)} placeholder="Enter a message.."/>
+          </Form.Group>
+          <Button disabled={!input} variant='primary' type='submit' onClick={sendMessage}>Send message</Button>
+        </Form>
         {/* Input */}
       </form>
       
@@ -41,3 +47,4 @@ function App() {
 }
 
 export default App;
+
