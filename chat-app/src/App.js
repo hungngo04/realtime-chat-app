@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([{username: 'hung'}, {text: 'hello'}, {username: 'hung1'}, {text: 'hi'}]);
+  const [messages, setMessages] = useState([{username: 'hung'}, {text: 'hello'}]);
   const [username, setUsername] = useState('');
 
   useEffect(() => {

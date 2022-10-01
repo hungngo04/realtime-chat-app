@@ -11,9 +11,8 @@ function Message({message, username}) {
         <div className={`message ${isUser && 'message__user'}`}>
             <Card className={isUser ? "message__userCard" : "message__guestCard"}>
                 <Card.Body>
-                    <Card.Title>abc</Card.Title>
                     <Card.Text>
-                        {message.username} : {message.text}
+                        <p>{message.username} : {message.text}</p>
                     </Card.Text>
                 </Card.Body>
             </Card>
