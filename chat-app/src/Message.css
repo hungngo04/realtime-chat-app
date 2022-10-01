@@ -1,5 +1,18 @@
-.message_card {
+.message {
     padding: 10px;
     margin: 10px;
     width: fit-content;
+}
+
+.message__user {
+    padding: 10px;
+    margin: 10px;
+    width: fit-content;
+    margin-left: auto;
+    text-align: left !important;
+}
+
+.message__userCard {
+    background-color: blue !important;
+    text-align: right;
 }
